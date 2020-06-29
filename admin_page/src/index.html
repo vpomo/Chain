@@ -1,0 +1,113 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Admin Smart Contract</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <h1>Cмарт-контракт Цепочка</h1>
+            <p>Адрес контракта: <span id="contractAddressLink"></span></p>
+            <p>Администратор: <span id="contractAdmin"></span></p>
+            <br>
+            <p id="noweb3message" class="" style="background: #ff6347; display: none;">Please use Chrome or Firefox, install the Metamask extension and retry the request!</p>
+        </div>
+        <div class="col-6">
+            <br>
+            <p class="text-bold">Ваш адрес: <span id="myAddress"></span></p>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-6">
+            <div class="card">
+                <div class="card-body">
+                    <h6 class="card-title">Статистика по вкладам пользователей</h6>
+                    <p></p>
+                    <br>
+                    <p>Баланс контракта: <span id="contractBalance"></span> ETH</p>
+                    <p>Время последнего вклада: <span id="contractLastStake"></span></p>
+                    <p>Всего вкладов: <span id="lastUserId"></span> шт.</p>
+                    <p>
+                        (из них
+                        1-х: <span id="oneStake"></span>;
+                        2-х: <span id="twoStake"></span>;
+                        3-х: <span id="threeStake"></span>;
+                        4-х: <span id="forStake"></span>;
+                        5-х: <span id="fiveStake"></span>;
+                        >5:  <span id="overStake"></span>
+                        )
+                    </p>
+                    <p>Получили выплаты: <span id="lastPaymentUserId"></span> шт.</p>
+                    <p>Уникальных кошельков: <span id="lastUniqueWalletId"></span> шт.</p>
+                    <br>
+                </div>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="card">
+                <div class="card-body">
+                    <h6 class="card-title">Просмотр содержимого произвольного звена цепочки</h6>
+                    <p></p>
+                    <div class="form-group">
+                        <label for="cellId">Введите номер звена:</label>
+                        <input type="text" class="form-control" id="cellId" value="1">
+                    </div>
+                    <button class="btn btn-success btn-sm btn-my" id="viewCell" onclick="viewCell();">Просмотреть содержимое</button>
+                    <div id="cellData" style="display: none;">
+                        <br>
+                        <p>Адрес кошелька: <span id="cellWallet"></span></p>
+                        <p>Дата покупки: <span id="cellDate"></span></p>
+                        <p>Баланс: <span id="cellBalance"></span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<br></br>
+
+    <div class="row">
+        <div class="col-3">
+        </div>
+        <div class="col-6">
+            <div class="card">
+                <div class="card-body">
+                    <h6 class="card-title">Управление контрактом (доступно только администратору)</h6>
+                    <p></p>
+                    <div class="form-group">
+                        <label for="withdrawEth">Введите количество ETH:</label>
+                        <input type="text" class="form-control" id="withdrawEth">
+                    </div>
+                    <button class="btn btn-primary btn-sm btn-my" id="withdraw" onclick="withdraw();">Снять с баланса контракта</button>
+                    <p></p>
+                    <button class="btn btn-danger btn-sm btn-my" id="destruct" onclick="destruct();">Уничтожить контракт</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-3">
+        </div>
+    </div>
+
+    <br></br>
+    <div align="center">
+        © 2020 The Chain Contract
+        <br/>
+        <br/>
+    </div>
+</div>
+
+</body>
+
+<script src='./js/meta.js' type='text/javascript'></script>
+</html>
+
